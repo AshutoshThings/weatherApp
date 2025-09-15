@@ -1,4 +1,5 @@
 import './style.css';
+import { getData } from './logic.js';
 
 window.addEventListener('DOMContentLoaded', () => {
   const renderApp = () => {
@@ -48,6 +49,7 @@ window.addEventListener('DOMContentLoaded', () => {
     btn.textContent = 'Go';
     btn.addEventListener('click', () => {
       console.log('fetch the api');
+      getData();
     });
     divforSearch.append(inp, btn);
     return divforSearch;
