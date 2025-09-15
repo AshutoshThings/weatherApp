@@ -38,6 +38,20 @@ window.addEventListener('DOMContentLoaded', () => {
 
     return header;
   };
+  const searchCity = () => {
+    const divforSearch = document.createElement('div');
+    divforSearch.className = 'search-container';
+    const inp = document.createElement('input');
+    inp.type = 'text';
+    inp.placeholder = 'Enter city name...';
+    const btn = document.createElement('button');
+    btn.textContent = 'Go';
+    btn.addEventListener('click', () => {
+      console.log('fetch the api');
+    });
+    divforSearch.append(inp, btn);
+    return divforSearch;
+  };
   const createMainContent = () => {
     const main = document.createElement('main');
     main.className = 'main-content';
@@ -49,19 +63,8 @@ window.addEventListener('DOMContentLoaded', () => {
         description: 'Hazy Sunshine',
         feels_like: '33',
       },
-      {
-        city: 'Mumbai',
-        temp: '29',
-        description: 'Chance of a Thunderstorm',
-        feels_like: '31',
-      },
-      {
-        city: 'Bengaluru',
-        temp: '25',
-        description: 'Cloudy',
-        feels_like: '25',
-      },
     ];
+    main.appendChild(searchCity());
     weatherData.forEach((data) => {
       main.appendChild(createHeroSection(data));
     });
