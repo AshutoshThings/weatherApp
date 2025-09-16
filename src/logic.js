@@ -1,13 +1,13 @@
-function getData() {
-  fetch(
-    'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/location/today?unitGroup=metric&key=MX9DLJYTJ4G7NNRFACUL5HXPS&contentType=json&include=events',
-    {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }
-  )
+import { changeDOM } from './dom.js';
+function getData(cityName) {
+  // let cityName = 'Mumbai';
+  let url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cityName}/today?unitGroup=metric&key=MX9DLJYTJ4G7NNRFACUL5HXPS&contentType=json&include=events`;
+  fetch(url, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
     .then((response) => {
       if (!response.ok) {
         throw response;
@@ -16,10 +16,11 @@ function getData() {
     })
     .then((data) => {
       console.log('Weather data:', data);
+      changeDOM(data);
+      console.log(data.days[0].temp);
     })
     .catch((errorResponse) => {
       if (errorResponse.text) {
-        // Additional error information
         errorResponse.text().then((errorMessage) => {
           console.error('Error message:', errorMessage);
         });

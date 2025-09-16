@@ -49,7 +49,8 @@ window.addEventListener('DOMContentLoaded', () => {
     btn.textContent = 'Go';
     btn.addEventListener('click', () => {
       console.log('fetch the api');
-      getData();
+      let cityName = inp.value;
+      getData(cityName);
     });
     divforSearch.append(inp, btn);
     return divforSearch;
